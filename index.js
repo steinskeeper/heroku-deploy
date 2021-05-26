@@ -23,7 +23,7 @@ async function buildPushAndDeploy() {
   const formation = core.getInput('formation');
   
   try {
-    await exec(`docker build --file ${dockerFilePath}/Dockerfile ${buildOptions} --tag registry.heroku.com/${appName}/${formation} ${dockerFilePath}`);
+    await exec(`docker build --file ${dockerFilePath}/Dockerfile.heroku ${buildOptions} --tag registry.heroku.com/${appName}/${formation} ${dockerFilePath}`);
     console.log('Image built 🛠');
 
     await exec(herokuAction('push'));
